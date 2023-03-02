@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MODELS", "MODELS\MODELS.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{14FB2BB7-728D-4287-9DF9-01D18E7A381F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{508AEB9D-43B2-48F0-A7E0-06248B85CE28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{508AEB9D-43B2-48F0-A7E0-06248B85CE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsAppPrincipal", "WindowsFormsAppPrincipal\WindowsFormsAppPrincipal.csproj", "{3EE05944-5137-4105-9D10-EBBD9FD09B51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{508AEB9D-43B2-48F0-A7E0-06248B85CE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{508AEB9D-43B2-48F0-A7E0-06248B85CE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{508AEB9D-43B2-48F0-A7E0-06248B85CE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE05944-5137-4105-9D10-EBBD9FD09B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE05944-5137-4105-9D10-EBBD9FD09B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE05944-5137-4105-9D10-EBBD9FD09B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE05944-5137-4105-9D10-EBBD9FD09B51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

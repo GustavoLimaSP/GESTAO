@@ -7,21 +7,24 @@ namespace BLL
     {
 
         public void inserir(Usuario _usuario)
-        {         
-            ValidarDados(_usuario);
-            //TODO: Validar se já existe um usuário com este nome.
+        {
+            Usuario usuario = new Usuario();
+
+            Usuario = BuscarUsuarioPorNome(_usuario.NomeUsuario)
+                throw new Exception("Usuário já existente");
+
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
         }
-        //TODO: Terminar o método BuscarPorNomeUsuario
         public Usuario BuscaPorNomeUsuario(string _nomeUsuario)
         {
             if (String.IsNullOrEmpty(_nomeUsuario))
                 throw new Exception("Informe o nome do usuário.");
+            
             UsuarioDAL _usuarioDAL = new UsuarioDAL();
-            return usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
+            usuarioDAL.Inserir(_usuario);
         }
-        public void Inserir(Usuario _usuario)
+        private void ValidarDados(Usuario _usuario)
         {
             if (_usuario.Username.Length <= 3 || _usuario.Username.Length >= 50)
                 throw new Exception("O nome de usuário deve ter mais de três caracteres.");
@@ -42,10 +45,15 @@ namespace BLL
 
         }
 
-        public Usuario Buscar(string _nomeUsuario)
+        public Usuario BuscarUsuarioPorNome(string _nomeUsuario)
         {
-            return new Usuario();
+            if(String.IsNullOrEmpty(_nomeUsuario))
+                throw new Exception("Informe o nome do usuário.");
+
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarUsuarioPorNome(_nomeUsuario);
         }
+        public List<usuario>
         public void ValidarDados(Usuario _usuario)
         {
 
