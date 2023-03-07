@@ -1,4 +1,6 @@
 ﻿using MODELS;
+using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace DAL
@@ -47,7 +49,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, Email, Ativo FROM Usuario ";
+                cmd.CommandText = @"SELECT Id, Nome, NOMEUSUARIO, CPF, Email, Ativo FROM Usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
 
@@ -58,7 +60,7 @@ namespace DAL
                         usuario = new Usuario();
                         usuario.Id = Convert.ToInt32(rd["Id"]);
                         usuario.Nome = rd["Nome"].ToString();
-                        usuario.Username = rd["Username"].ToString();
+                        usuario.Username = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
@@ -86,5 +88,14 @@ namespace DAL
 
         }
 
+        public Usuario BuscarUsuarioPorNome(string nomeUsuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Usuario> BuscarID()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

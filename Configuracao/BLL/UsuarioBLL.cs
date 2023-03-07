@@ -1,5 +1,7 @@
 ﻿using DAL;
 using MODELS;
+using System;
+using System.Collections.Generic;
 
 namespace BLL
 {
@@ -10,8 +12,8 @@ namespace BLL
         {
             Usuario usuario = new Usuario();
 
-            Usuario = BuscarUsuarioPorNome(_usuario.NomeUsuario)
-                throw new Exception("Usuário já existente");
+            usuario = BuscarUsuarioPorNome(_usuario.Username);
+            throw new Exception("Usuário já existente");
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
@@ -20,9 +22,9 @@ namespace BLL
         {
             if (String.IsNullOrEmpty(_nomeUsuario))
                 throw new Exception("Informe o nome do usuário.");
-            
+
             UsuarioDAL _usuarioDAL = new UsuarioDAL();
-            usuarioDAL.Inserir(_usuario);
+            return _usuarioDAL.BuscarUsuarioPorNome(_nomeUsuario);
         }
         private void ValidarDados(Usuario _usuario)
         {
@@ -45,6 +47,16 @@ namespace BLL
 
         }
 
+        public List<Usuario> BuscarTodos()
+        {
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            if (textBox1.Text == "")
+                usuarioBindingSource.DataSource = usuarioBLL.BuscarTodos();
+            else
+                usuarioBindingSource.DataSource
+            return usuarioDAL.BuscarTodos();
+        }
+
         public Usuario BuscarUsuarioPorNome(string _nomeUsuario)
         {
             if(String.IsNullOrEmpty(_nomeUsuario))
@@ -52,11 +64,6 @@ namespace BLL
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             return usuarioDAL.BuscarUsuarioPorNome(_nomeUsuario);
-        }
-        public List<usuario>
-        public void ValidarDados(Usuario _usuario)
-        {
-
         }
     }
 }

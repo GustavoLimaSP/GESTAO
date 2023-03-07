@@ -1,4 +1,6 @@
-﻿namespace MODELS
+﻿using System.Collections.Generic;
+
+namespace MODELS
 {
     public class Usuario
     {
