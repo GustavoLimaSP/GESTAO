@@ -88,7 +88,7 @@ namespace DAL
 
         }
 
-        public Usuario BuscarUsuarioPorNome(string nomeUsuario)
+        public Usuario BuscarPorNomeUsuario(string nomeUsuario)
         {
             throw new NotImplementedException();
         }

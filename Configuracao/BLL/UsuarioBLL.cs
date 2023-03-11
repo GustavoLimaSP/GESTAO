@@ -2,6 +2,7 @@
 using MODELS;
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 
 namespace BLL
 {
@@ -12,19 +13,20 @@ namespace BLL
         {
             Usuario usuario = new Usuario();
 
-            usuario = BuscarUsuarioPorNome(_usuario.Username);
+            usuario = BuscaPorNomeUsuario(_usuario.Username);
             throw new Exception("Usuário já existente");
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
         }
+
         public Usuario BuscaPorNomeUsuario(string _nomeUsuario)
         {
             if (String.IsNullOrEmpty(_nomeUsuario))
                 throw new Exception("Informe o nome do usuário.");
 
             UsuarioDAL _usuarioDAL = new UsuarioDAL();
-            return _usuarioDAL.BuscarUsuarioPorNome(_nomeUsuario);
+            return _usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
         }
         private void ValidarDados(Usuario _usuario)
         {
@@ -46,24 +48,19 @@ namespace BLL
             usuarioDAL.Inserir(_usuario);
 
         }
+        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
+        {
+            if (String.IsNullOrEmpty(_nomeUsuario))
+                throw new Exception("Informe o nome do usúario.");
+
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
+        }
 
         public List<Usuario> BuscarTodos()
         {
             UsuarioDAL usuarioDAL = new UsuarioDAL();
-            if (textBox1.Text == "")
-                usuarioBindingSource.DataSource = usuarioBLL.BuscarTodos();
-            else
-                usuarioBindingSource.DataSource
             return usuarioDAL.BuscarTodos();
-        }
-
-        public Usuario BuscarUsuarioPorNome(string _nomeUsuario)
-        {
-            if(String.IsNullOrEmpty(_nomeUsuario))
-                throw new Exception("Informe o nome do usuário.");
-
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-            return usuarioDAL.BuscarUsuarioPorNome(_nomeUsuario);
         }
     }
 }
