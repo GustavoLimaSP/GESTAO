@@ -14,7 +14,7 @@ namespace DAL
         {
             SqlConnection cn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
-            Usuario usuario;
+            GrupoUsuario grupoUsuario;
             List<GrupoUsuario> usuarios = new List<GrupoUsuario>();
             try
             {
@@ -31,15 +31,11 @@ where ID_USUARIO= @Id_Usuario";
                 {
                     while (rd.Read())
                     {
-                        usuario = new Usuario();
-                        usuario.Id = Convert.ToInt32(rd["Id"]);
-                        usuario.Nome = rd["Nome"].ToString();
-                        usuario.Username = rd["NomeUsuario"].ToString();
-                        usuario.CPF = rd["CPF"].ToString();
-                        usuario.Email = rd["Email"].ToString();
-                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        grupoUsuario = new GrupoUsuario();
+                        grupoUsuario.Id = Convert.ToInt32(rd["Id"]);
+                        grupoUsuario.Descricao = rd["GrupoUsuario"].ToString();
 
-                        usuarios.Add(usuario);
+                        usuarios.Add(grupoUsuario);
                     }
                 }
                 return usuarios;

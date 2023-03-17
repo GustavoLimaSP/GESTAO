@@ -9,13 +9,11 @@ namespace BLL
     public class UsuarioBLL
     {
 
-        public void inserir(Usuario _usuario)
+        public void inserir(Usuario _usuario, string _confirmarDeSenha)
         {
             Usuario usuario = new Usuario();
-
-            usuario = BuscaPorNomeUsuario(_usuario.Username);
+            usuario = BuscaPorNomeUsuario(_usuario.NomeUsuario);
             throw new Exception("Usuário já existente");
-
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
         }
@@ -28,12 +26,18 @@ namespace BLL
             UsuarioDAL _usuarioDAL = new UsuarioDAL();
             return _usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
         }
-        private void ValidarDados(Usuario _usuario)
+        public void Alterar(Usuario _usuario, string _confirmacaoDeSenha)
         {
-            if (_usuario.Username.Length <= 3 || _usuario.Username.Length >= 50)
+
+                           
+                
+        }
+        private static void ValidarDados(Usuario _usuario)
+        {
+            if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
                 throw new Exception("O nome de usuário deve ter mais de três caracteres.");
 
-            if (_usuario.Username.Contains(" "))
+            if (_usuario.NomeUsuario.Contains(" "))
                 throw new Exception("O nome de usuário não pode conter espaço");
 
             if (_usuario.Senha == "1234567")
@@ -62,5 +66,21 @@ namespace BLL
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             return usuarioDAL.BuscarTodos();
         }
+
+        public void Excluir(int id)
+        {
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            usuarioDAL.Excluir(_id);
+        }
+
+        public void AdicionarGrupo(int _idUsuario, int _idGrupoUsuario)    
+        {
+        if (new UsuarioDAL().ExisteRelacionamento(_idUsuario, _idGrupoUsuario))
+             return;
+           
+            UsuarioDAL UsuarioDAL = new UsuarioDAL();
+            UsuarioDAL.AdicionarGrupo(_idUsuario, _idGrupoUsuario);
+        }
     }
 }
+
