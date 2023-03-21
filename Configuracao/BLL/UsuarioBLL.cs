@@ -28,8 +28,7 @@ namespace BLL
         }
         public void Alterar(Usuario _usuario, string _confirmacaoDeSenha)
         {
-
-                           
+                
                 
         }
         private static void ValidarDados(Usuario _usuario)

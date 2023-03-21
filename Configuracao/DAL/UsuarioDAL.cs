@@ -228,5 +228,38 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public bool ValidarPermissao(int _idUsuario, int _idPermissao)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario;
+            SqlConnection cn = new SqlConnection();
+            SqlConnection cmd = new SqlConnection();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT TOP 1 1 AS Resultado FROM UsuarioGrupoUsuario INNER JOIN PermissaoGrupoUsuario ON UsuarioGrupoUsuario.Id_GrupoUsuario = PermissaoGrupoUsuario.Id_GrupoUsuario WHERE UsuarioGrupoUsuario.Id_Usuario = @IdUsuario AND PermissaoGrupoUsuario.Id_Permissao = @IdPermissao";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
+                cmd.Parameters.AddWithValue("@IdUsuario", _idPermissao);
+                cn.Open();
+                using(SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    if(rd.Read())
+                        return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ocorreu um erro ao tentar validar permissão do usuário no banco de dados: "+ ex.Message);  
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
     }
 }
